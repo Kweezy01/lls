@@ -15,7 +15,7 @@ const Edit = () => {
    
    if (typeof router.query.team != "string") return (<h1>Team not found</h1>)
    const teamName = `${router.query.team}`
-   const { data } = api.scoreQuery.find.useQuery({ teamName: teamName });
+   const { data } = api.select.selectTeam.useQuery({ teamName: teamName });
 
    return (
       <>
@@ -37,7 +37,7 @@ const Edit = () => {
                         <td className="font-bold text-center border-b border-x bg-blue-500">Team</td><td className="font-bold text-center border-b border-x bg-blue-500">Anglers</td><td className="font-bold text-center border-b border-x bg-blue-500">Total Fish</td><td className="font-bold text-center border-b border-x bg-blue-500">Total Weight</td>
                      </tr>
                      <tr className="bg-black bg-opacity-70 text-slate-300 font-bold ml-6 border-b">
-                        {[data?.teamName, data?.teammates, data?.totalFish, data?.totalWeight].map((e) => {
+                        {[data?.teamName, data?.angler1, data?.angler2, data?.totalFish, data?.totalWeight].map((e) => {
                            return (
                               <td key={e} className="text-center border-x">{e}</td>
                            )

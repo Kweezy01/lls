@@ -6,6 +6,18 @@ export const deleteRouter = createTRPCRouter({
       teamName: z.string(),
    })).mutation(async ({ ctx, input }) => {
 
+      await ctx.db.catches.deleteMany({
+         where: {
+            teamName: input.teamName,
+         }
+      })
+
+      await ctx.db.batches.deleteMany({
+         where: {
+            teamName: input.teamName,
+         }
+      })
+      
       await ctx.db.team.delete({
          where: {
             teamName: input.teamName,

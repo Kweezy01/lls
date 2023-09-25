@@ -19,21 +19,26 @@ const Delete = () => {
    const { data } = api.select.selectTeam.useQuery({ teamName: teamName });
 
    if (deleteChecker) return (
-      <div className="flex justify-center pt-10">
-         <table>
-            <tr><h1>Are you sure you want to delete team: {teamName}?</h1></tr>
-            <tr className="flex justify-center">
-               <button className="ml-1 bg-red-700 hover:bg-red-800  py-2 px-4 border border-lime-900 rounded"
-                  onClick={() => {
-                     deleteTeam.mutate({ teamName: teamName })
-                     setDeleteFlag(true)
-                  }}>
-                  <Link href={"/"}>DELETE</Link>
-               </button>
-            </tr>
-         </table>
+      <main className="flex bg-black h-screen justify-center">
+         <div className="text-slate-500 bg-white bg-center bg-contain bg-[url('https://scontent-jnb1-1.xx.fbcdn.net/v/t39.30808-6/260277972_10227320945231659_2177364538079183029_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1ac024&_nc_ohc=BNUj0U7h4X0AX9ag8BH&_nc_ht=scontent-jnb1-1.xx&oh=00_AfDC04u-kGWkfzpbF3M2J_AV6brZETHXZaWgnR4ow5Zj7A&oe=65175085')] w-full border-x border-slate-400 md:max-w-2xl">
+            <table className="ml-3">
+               <br />
+               <br />
+               <br />
+               <tr><h1 className="text-white p-2 bg-black">Are you sure you want to delete team: {teamName}?</h1></tr>
+               <tr className="flex justify-center bg-black pb-3">
+                  <button className="ml-1 text-black bg-red-700 hover:bg-red-800  py-2 px-4 border border-lime-900 rounded"
+                     onClick={() => {
+                        deleteTeam.mutate({ teamName: teamName })
+                        setDeleteFlag(true)
+                     }}>
+                     <Link href={"/"}>DELETE</Link>
+                  </button>
+               </tr>
+            </table>
 
-      </div>
+         </div>
+      </main>
    )
    if (deleteFlag) return (
       <div className="flex justify-center pt-10">
@@ -49,7 +54,7 @@ const Delete = () => {
             <link rel="icon" href="/favicon.ico" />
          </Head>
          <main className="flex bg-black h-screen justify-center">
-            <div className="text-black bg-center bg-contain bg-[url('https://scontent-jnb1-1.xx.fbcdn.net/v/t39.30808-6/358048788_10231187416211017_4552627758839448556_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=B7spF6MXrU0AX9Augs5&_nc_ht=scontent-jnb1-1.xx&oh=00_AfBfp2PaCSBBX1VQ1KLL8krsMzEmjS2GmFQikofFvT1y7A&oe=64C11983')] w-full     border-x border-slate-400 md:max-w-2xl">
+            <div className="text-black bg-center bg-contain bg-[url('https://scontent-jnb1-1.xx.fbcdn.net/v/t39.30808-6/260277972_10227320945231659_2177364538079183029_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1ac024&_nc_ohc=BNUj0U7h4X0AX9ag8BH&_nc_ht=scontent-jnb1-1.xx&oh=00_AfDC04u-kGWkfzpbF3M2J_AV6brZETHXZaWgnR4ow5Zj7A&oe=65175085')] w-full     border-x border-slate-400 md:max-w-2xl">
                <div className="flex pl-1 pt-1 pb-1 border-b border-slate-400">
                   <nav>
                      <Link href={`/${teamName}`}>Back</Link>

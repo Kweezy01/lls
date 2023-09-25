@@ -2,10 +2,15 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { api } from "~/utils/api";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
 
-   const { data, isLoading } = api.select.getCatches.useQuery();
+   const router = useRouter();
+
+   const teamName = router.query.team
+   if (typeof teamName != "string") return (<h1>Team not found</h1>)
+   const { data, isLoading } = api.select.selectBatches.useQuery({ teamName: teamName });;
 
    if (isLoading) return <div>Loading...</div>
 
@@ -33,17 +38,19 @@ const Home: NextPage = () => {
                </div>
                <table className="w-full mt-5">
                   <tr>
-                     <td className="font-bold text-center border-b border-x bg-blue-500">Team</td>
-                     <td className="font-bold text-center border-b border-x bg-blue-500">Angler</td>
+                     <td className="font-bold text-center border-b border-x bg-blue-500">Total Fish</td>
                      <td className="font-bold text-center border-b border-x bg-blue-500">Weight</td>
                   </tr>
-                  {data.map((team) => (
-                     <tr key={team.teamName} className="bg-black bg-opacity-70 text-slate-300 font-bold ml-6 border-b">
-                        <td className="text-center border-x"><Link href={team.teamName}>{team.teamName}</Link></td>
-                        <td className="text-center border-x">{team.catcher}</td>
-                        <td className="text-center border-x">{team.weight}</td>
-                     </tr>
-                  ))}
+                  {
+                     data.map((batch) => {
+                        return (
+                           <tr key={batch.teamName} className="bg-black bg-opacity-70 text-slate-300 font-bold ml-6 border-b">
+                              <td className="text-center border-x">{batch.totalFish}</td>
+                              <td className="text-center border-x">{batch.weight}</td>
+                           </tr>
+                        )
+                     })
+                  }
                </table>
             </div>
          </main>

@@ -1,3 +1,4 @@
+import { Input } from "postcss";
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
@@ -18,4 +19,21 @@ export const updateRouter = createTRPCRouter({
       }
     });
   }),
+
+  updateRecordedGames: publicProcedure.input(z.object({
+
+    teamName: z.string(),
+    recordedGames: z.number(),
+
+  })).mutation(async ({ ctx, input }) => {
+    await ctx.db.team.update({
+      where: {
+        teamName: input.teamName,
+      },
+      data: {
+        recordedGames: input.recordedGames,
+      }
+    })
+  })
+
 });

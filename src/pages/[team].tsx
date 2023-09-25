@@ -19,7 +19,7 @@ const Team = () => {
             <link rel="icon" href="/favicon.ico" />
          </Head>
          <main className="flex bg-black h-screen justify-center">
-            <div className="text-black bg-center bg-contain bg-[url('https://scontent-jnb1-1.xx.fbcdn.net/v/t39.30808-6/260277972_10227320945231659_2177364538079183029_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1ac024&_nc_ohc=yIw9U_aQiRQAX9F87JG&_nc_ht=scontent-jnb1-1.xx&oh=00_AfA5E4ToeI_-ZbRjm_pwMNphjmAUTS1CEZuoPwXzPMP8WA&oe=650B7305')] w-full     border-x border-slate-400 md:max-w-2xl">
+            <div className="text-black bg-center bg-contain bg-[url('https://scontent-jnb1-1.xx.fbcdn.net/v/t39.30808-6/260277972_10227320945231659_2177364538079183029_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1ac024&_nc_ohc=BNUj0U7h4X0AX9ag8BH&_nc_ht=scontent-jnb1-1.xx&oh=00_AfDC04u-kGWkfzpbF3M2J_AV6brZETHXZaWgnR4ow5Zj7A&oe=65175085')] w-full     border-x border-slate-400 md:max-w-2xl">
                <div className="flex pl-1 pt-1 pb-1 border-b border-slate-400">
                   <nav>
                      <button>
@@ -56,9 +56,27 @@ const Team = () => {
                <button className="ml-1 bg-green-700 hover:bg-green-800  py-2 px-4 border border-lime-900 rounded">
                   <Link href={`${teamName}/edit`}>Edit</Link>
                </button>
+               <button className="ml-1 bg-green-700 hover:bg-green-800  py-2 px-4 border border-lime-900 rounded">
+                  <Link href={`${teamName}/editrecordedgames`}>Edit Recorded Games</Link>
+               </button>
+
+               <br />
+               <br />
+
+               <button className="ml-1 bg-green-700 hover:bg-green-800  py-2 px-4 border border-lime-900 rounded">
+                  <Link href={`${teamName}/catches`}>Catches</Link>
+               </button>
+               <button className="ml-1 bg-green-700 hover:bg-green-800  py-2 px-4 border border-lime-900 rounded">
+                  <Link href={`${teamName}/batches`}>Batches</Link>
+               </button>
+
+               <br />
+               <br />
+
                <button className="ml-1 bg-red-700 hover:bg-red-800  py-2 px-4 border border-lime-900 rounded">
                   <Link href={`${teamName}/delete`}>Delete</Link>
                </button>
+
             </div>
          </main>
       </>

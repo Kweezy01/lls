@@ -2,20 +2,21 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { record } from "zod";
 import { api } from "~/utils/api";
 
 const Edit = () => {
 
-   const [totalFish, setTotalFish] = useState(0.1)
-   const [totalWeight, setTotalWeight] = useState(0.1)
+   const [totalGames, setTotalGames] = useState(0.1)
 
    const router = useRouter()
 
-   const { mutate } = api.update.updateScore.useMutation();
-   
+   const { mutate } = api.update.updateRecordedGames.useMutation();
+
    if (typeof router.query.team != "string") return (<h1>Team not found</h1>)
    const teamName = `${router.query.team}`
-   const { data } = api.select.selectTeam.useQuery({ teamName: teamName });
+   const { data, isLoading } = api.select.selectTeam.useQuery({ teamName: teamName });
+   if (!data) return <>Loading...</>
 
    return (
       <>
@@ -34,10 +35,10 @@ const Edit = () => {
                   </div>
                   <table className="mt-1 w-full">
                      <tr>
-                        <td className="font-bold text-center border-b border-x bg-blue-500">Team</td><td className="font-bold text-center border-b border-x bg-blue-500">Angler 1</td><td className="font-bold text-center border-b border-x bg-blue-500">Angler 2</td><td className="font-bold text-center border-b border-x bg-blue-500">Total Fish</td><td className="font-bold text-center border-b border-x bg-blue-500">Total Weight</td>
+                        <td className="font-bold text-center border-b border-x bg-blue-500">Team</td><td className="font-bold text-center border-b border-x bg-blue-500">Angler 1</td><td className="font-bold text-center border-b border-x bg-blue-500">Angler 2</td><td className="font-bold text-center border-b border-x bg-blue-500">Recorded Games</td>
                      </tr>
                      <tr className="bg-black bg-opacity-70 text-slate-300 font-bold ml-6 border-b">
-                        {[data?.teamName, data?.angler1, data?.angler2, data?.totalFish, data?.totalWeight].map((e) => {
+                        {[data?.teamName, data?.angler1, data?.angler2, data?.recordedGames].map((e) => {
                            return (
                               <td key={e} className="text-center border-x">{e}</td>
                            )
@@ -45,38 +46,39 @@ const Edit = () => {
                      </tr>
                   </table>
                   <div className="ml-10">
-                     <h1 className="ml-1 pt-4">Update the score below:</h1>
+                     <h1 className="ml-1 pt-4">Update recorded games below:</h1>
 
                      <br />
 
-                     <div className="ml-1">Total Fish:
+                     <div className="ml-1">Games Played:
                         <input className="bg-black shadow appearance-none border rounded ml-10 py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
                            id="TotalFish" type="number"
                            name="amount" min="0"
                            step="1"
 
-                           onChange={(e) => setTotalFish(Number(e.target.value))}
+                           onChange={(e) => setTotalGames(Number(e.target.value))}
                         />
                      </div>
 
                      <br />
-
-                     <div className="ml-1">Total Weight:
-                        <input className="bg-black shadow appearance-none border rounded ml-4 py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
-                           id="TotalWeight" type="number"
-                           name="weight" min="0"
-                           // value={totalWeight}
-                           onChange={(e) => setTotalWeight(Number(e.target.value))}
-                        />
-                     </div>
 
                      <br />
                      <button className="ml-1 bg-green-700 hover:bg-green-800  py-2 px-4 border border-lime-900 rounded"
                         onClick={() => {
                            if (!data) console.log("No data")
-                           mutate({ teamName: teamName, totalFish: totalFish, totalWeight: totalWeight })
+                           mutate({ teamName: teamName, recordedGames: totalGames })
                         }}>
                         <Link href={`/${teamName}`}>Update team</Link>
+                     </button>
+                     <br /><br />
+                     <h1 className="text-2xl">OR</h1>
+                     <br />
+                     <button className="ml-1 bg-green-700 hover:bg-green-800  py-2 px-4 border border-lime-900 rounded"
+                        onClick={() => {
+                           if (!data) console.log("No data")
+                           mutate({ teamName: teamName, recordedGames: data.recordedGames + 1 })
+                        }}>
+                        <Link href={`/${teamName}`}>Increase current games by 1</Link>
                      </button>
                   </div>
                </div>

@@ -39,8 +39,8 @@ const AddCatch = () => {
                <table className="mt-1 w-full text-black">
                   <tr>
                      <td className="font-bold text-center border-b border-x bg-blue-500">Team</td>
-                     <td className="font-bold text-center border-b border-x bg-blue-500">Angler 1</td>
-                     <td className="font-bold text-center border-b border-x bg-blue-500">Angler 2</td>
+                     <td className="font-bold text-center border-b border-x bg-blue-500">Skipper</td>
+                     <td className="font-bold text-center border-b border-x bg-blue-500">CO-Angler</td>
                      <td className="font-bold text-center border-b border-x bg-blue-500">Total Fish</td>
                      <td className="font-bold text-center border-b border-x bg-blue-500">Total Weight</td>
                   </tr>

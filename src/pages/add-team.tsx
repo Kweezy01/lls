@@ -50,7 +50,7 @@ const AddTeam: NextPage = () => {
 
                <br />
 
-               <div className="ml-1">Angler 1:
+               <div className="ml-1">Skipper:
                   <input className="bg-black shadow appearance-none border rounded ml-4 py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
                      id="playerNames" type="text" placeholder="Player 1"
                      value={angler1}
@@ -58,7 +58,7 @@ const AddTeam: NextPage = () => {
                   />
                </div>
 
-               <div className="ml-1">Angler 2:
+               <div className="ml-1">CO-Angler:
                   <input className="bg-black shadow appearance-none border rounded ml-4 py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
                      id="playerNames" type="text" placeholder="Player 2"
                      value={angler2}

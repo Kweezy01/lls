@@ -35,7 +35,7 @@ const Edit = () => {
                   </div>
                   <table className="mt-1 w-full">
                      <tr>
-                        <td className="font-bold text-center border-b border-x bg-blue-500">Team</td><td className="font-bold text-center border-b border-x bg-blue-500">Angler 1</td><td className="font-bold text-center border-b border-x bg-blue-500">Angler 2</td><td className="font-bold text-center border-b border-x bg-blue-500">Recorded Games</td>
+                        <td className="font-bold text-center border-b border-x bg-blue-500">Team</td><td className="font-bold text-center border-b border-x bg-blue-500">Skipper</td><td className="font-bold text-center border-b border-x bg-blue-500">CO-Angler</td><td className="font-bold text-center border-b border-x bg-blue-500">Recorded Games</td>
                      </tr>
                      <tr className="bg-black bg-opacity-70 text-slate-300 font-bold ml-6 border-b">
                         {[data?.teamName, data?.angler1, data?.angler2, data?.recordedGames].map((e) => {

@@ -31,7 +31,7 @@ const Team = () => {
                   <tr>
                      <td className="font-bold text-center border-b border-x bg-blue-500">Team</td>
                      <td className="font-bold text-center border-b border-x bg-blue-500">Skipper</td>
-                     <td className="font-bold text-center border-b border-x bg-blue-500">CO-Angler 2</td>
+                     <td className="font-bold text-center border-b border-x bg-blue-500">CO-Angler</td>
                      <td className="font-bold text-center border-b border-x bg-blue-500">Total Fish</td>
                      <td className="font-bold text-center border-b border-x bg-blue-500">Total Weight</td>
                      <td className="font-bold text-center border-b border-x bg-blue-500">Recorded Games</td>
